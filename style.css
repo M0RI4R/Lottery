@@ -1,0 +1,44 @@
+* {
+  list-style: none;
+}
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: rgb(22, 197, 16);
+  list-style: none;
+  text-decoration: none;
+}
+
+.lottery-background {
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  max-width: 450px;
+  left: 0;
+  right: 0;
+  top: 10%;
+  background-color: white;
+  z-index: 1;
+  margin: 0 auto;
+}
+.frame {
+  display: flex;
+  flex-direction: column;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.items {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-basis: calc((100% - 5 * 30px) / 6);
+}
+.items input {
+  max-width: 30px;
+}
