@@ -13,18 +13,59 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <section class="lottery-background">
-      <div class="frame">
-        <img src="/images/lottery.jpg" alt="To jest logo loterii" />
-        <h1>Make a bet</h1>
-        <div class="items">
-          <input type="number" />
-          <input type="number" />
-          <input type="number" />
-          <input type="number" />
-          <input type="number" />
-          <input type="number" />
+    <section class="lottery-container">
+      <div class="main-content">
+        <header>
+          <img src="images/lottery.jpg" />
+          <h1>Wybierz swoje liczby</h1>
+          <p>Wybierz 6 z 49 liczb</p>
+        </header>
+        <div class="good-luck">
+          <ul>
+            <li>Chybił trafił</li>
+            <input type="checkbox" id="check" class="toggle" />
+            <label for="check"></label>
+          </ul>
+          <ul>
+            <label for="gameType">System</label>
+            <select name="gameType" id="gameType">
+              <option>Bez systemu</option>
+              <option>7 liczb(7 zakładów prostych)</option>
+              <option>8 liczb(28 zakładów prostych)</option>
+              <option>9 liczb(84 zakładyproste)</option>
+              <option>10 liczb(210 zakładów prostych)</option>
+            </select>
+          </ul>
         </div>
+        <div class="bet-zone">
+          <ul class="numbers">
+            <li><input value="" type="text" maxlength="2" /></li>
+            <li><input value="" type="text" maxlength="2" /></li>
+            <li><input value="" type="text" maxlength="2" /></li>
+            <li><input value="" type="text" maxlength="2" /></li>
+            <li><input value="" type="text" maxlength="2" /></li>
+            <li><input value="" type="text" maxlength="2" /></li>
+          </ul>
+          <ul class="edit-zone">
+            <li>
+              <button class="changeNumbers" type="button">
+                <i class="fa-solid fa-rotate"></i>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="writeNumbers">
+                <i class="fa-regular fa-pen-to-square"></i>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="deleteNumbers">
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <p class="alert">podaj wszystkie liczby</p>
+        <button class="check-btn" type="button">Check</button>
       </div>
     </section>
     <script src="/script.js"></script>
