@@ -19,12 +19,24 @@
           <img src="images/lottery.jpg" />
           <h1>Wybierz swoje liczby</h1>
           <p>Wybierz 6 z 49 liczb</p>
+          <ul class="winning-numbers">
+            <li class="first-num"></li>
+            <li class="second-num"></li>
+            <li class="third-num"></li>
+            <li class="fourth-num"></li>
+            <li class="fifth-num"></li>
+            <li class="sixth-num"></li>
+          </ul>
         </header>
         <div class="good-luck">
           <ul>
             <li>Chybił trafił</li>
-            <input type="checkbox" id="check" class="toggle" />
-            <label for="check"></label>
+            <li>
+              <label class="toggle" for="check">
+                <input type="checkbox" id="check" class="toggle-input" />
+                <div class="toggle-background"></div>
+              </label>
+            </li>
           </ul>
           <ul>
             <label for="gameType">System</label>
@@ -39,12 +51,24 @@
         </div>
         <div class="bet-zone">
           <ul class="numbers">
-            <li><input value="" type="text" maxlength="2" /></li>
-            <li><input value="" type="text" maxlength="2" /></li>
-            <li><input value="" type="text" maxlength="2" /></li>
-            <li><input value="" type="text" maxlength="2" /></li>
-            <li><input value="" type="text" maxlength="2" /></li>
-            <li><input value="" type="text" maxlength="2" /></li>
+            <li>
+              <input class="one" value="" type="number" nim="1" max="49" />
+            </li>
+            <li>
+              <input class="two" value="" type="number" nim="1" max="49" />
+            </li>
+            <li>
+              <input class="three" value="" type="number" nim="1" max="49" />
+            </li>
+            <li>
+              <input class="four" value="" type="number" nim="1" max="49" />
+            </li>
+            <li>
+              <input class="five" value="" type="number" nim="1" max="49" />
+            </li>
+            <li>
+              <input class="six" value="" type="number" nim="1" max="49" />
+            </li>
           </ul>
           <ul class="edit-zone">
             <li>
@@ -65,7 +89,10 @@
           </ul>
         </div>
         <p class="alert">podaj wszystkie liczby</p>
-        <button class="check-btn" type="button">Check</button>
+        <button class="check-btn" type="button">
+          <i class="play">Gram</i>
+          <i class="play-again">Zagraj ponownie</i>
+        </button>
       </div>
     </section>
     <script src="/script.js"></script>

@@ -9,7 +9,7 @@
   margin: 0;
 }
 body {
-  background-color: rgb(22, 197, 16);
+  background-image: url(/images/hd-wallpaper-g3e4759a03_1920.jpg);
 }
 
 .lottery-container {
@@ -30,6 +30,18 @@ header {
   justify-content: center;
   margin-bottom: 20px;
 }
+.winning-numbers {
+  display: flex;
+}
+.winning-numbers li {
+  color: #fff;
+  background-color: dodgerblue;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  line-height: 60px;
+  text-align: center;
+}
 .good-luck {
   align-items: flex-end;
   display: flex;
@@ -40,10 +52,56 @@ header {
 .good-luck > * {
   display: flex;
 }
+.good-luck ul li {
+  padding-right: 10px;
+}
 .good-luck ul:last-child {
   display: flex;
   flex-direction: column;
 }
+.toggle {
+  --width: 40px;
+  --height: calc(var(--width) / 2);
+  --border-radius: calc(var(--height) / 2);
+  display: inline-block;
+  cursor: pointer;
+}
+.toggle-input {
+  display: none;
+}
+.toggle-background {
+  position: relative;
+  width: var(--width);
+  height: var(--height);
+  border-radius: var(--border-radius);
+  background: #dddddd;
+  transition: background 0.2s;
+}
+.toggle-input:checked ~ .toggle-background {
+  background: #4141ec;
+}
+.toggle-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1px;
+  height: var(--height);
+  width: var(--height);
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  border-radius: var(--border-radius);
+  transition: transform 0.2s;
+}
+.toggle-input:checked ~ .toggle-background::after {
+  transform: translateX(var(--height));
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .bet-zone {
   display: flex;
   flex-wrap: wrap;
@@ -120,6 +178,19 @@ header {
   color: white;
   background-image: linear-gradient(270deg, #ebb51e, #ff7900 99.55%);
 }
+.play {
+  display: flex;
+}
+.play-again {
+  display: none;
+}
+.display-none {
+  display: none;
+}
+.display-active {
+  display: inline-block;
+}
+
 .alert {
   display: none;
 }
