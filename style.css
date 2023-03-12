@@ -31,8 +31,11 @@ header {
   margin-bottom: 20px;
 }
 .winning-numbers {
-  display: flex;
+  display: none;
+  gap: 3px;
+  justify-content: space-between;
 }
+
 .winning-numbers li {
   color: #fff;
   background-color: dodgerblue;
@@ -42,6 +45,10 @@ header {
   line-height: 60px;
   text-align: center;
 }
+.display-flex {
+  display: flex;
+}
+
 .good-luck {
   align-items: flex-end;
   display: flex;
@@ -167,7 +174,7 @@ input::-webkit-inner-spin-button {
   height: 30px;
   border-radius: 50%;
 }
-
+.play-again-btn,
 .check-btn {
   font-size: 50px;
   padding: 5px 30px 5px 30px;
@@ -178,10 +185,7 @@ input::-webkit-inner-spin-button {
   color: white;
   background-image: linear-gradient(270deg, #ebb51e, #ff7900 99.55%);
 }
-.play {
-  display: flex;
-}
-.play-again {
+.play-again-btn {
   display: none;
 }
 .display-none {
@@ -189,10 +193,6 @@ input::-webkit-inner-spin-button {
 }
 .display-active {
   display: inline-block;
-}
-
-.alert {
-  display: none;
 }
 
 @media (max-width: 400px) {

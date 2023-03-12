@@ -4,9 +4,11 @@ let btnRefreshNumb = document.querySelector(".changeNumbers");
 let btnWriteNumb = document.querySelector(".writeNumbers");
 let btnDeleteNumb = document.querySelector(".deleteNumbers");
 let btnCheck = document.querySelector(".check-btn");
-let btnPlay = document.querySelector(".play");
-let btnPlayAgain = document.querySelector(".play-again");
-// let btnPlayAgain = document.querySelector(".play-again-btn");
+let btnPlayAgain = document.querySelector(".play-again-btn");
+
+// POPUPS
+let ulList = document.querySelector(".winning-numbers");
+let alert = document.querySelector(".alert");
 
 //Drown Numbers for lottery
 let first = document.querySelector(".first-num");
@@ -71,23 +73,56 @@ function del() {
 // Draw numbers
 const drawnNum = [first, second, third, fourth, fifth, sixth];
 const drawnNumbers = [];
-function draw() {
-  for (let i = 0; i < drawnNum.length; i++) {
-    let randomResult = Math.floor(Math.random() * 49 + 1);
-    drawnNum[i].textContent = randomResult;
-    drawnNumbers.push(randomResult);
-  }
-  btnPlay.classList.toggle("display-none");
-  btnPlayAgain.classList.toggle("display-active");
+//Checking if all user numbers imputs value are NULL
 
-  console.log(drawnNumbers);
+let confirm;
+function emptyInput() {
+  for (let i = 0; i < hit.length; i++) {
+    if (hit[i].value !== "") {
+      confirm = 1;
+      console.log(hit[i].value);
+    } else {
+      confirm = 0;
+    }
+  }
+}
+function draw() {
+  emptyInput();
+  console.log(confirm);
+  if (confirm == 1) {
+    for (let i = 0; i < drawnNum.length; i++) {
+      let randomResult = Math.floor(Math.random() * 49 + 1);
+      drawnNum[i].textContent = randomResult;
+      drawnNumbers.push(randomResult);
+    }
+    btnCheck.classList.remove("display-active");
+    btnCheck.classList.toggle("display-none");
+    btnPlayAgain.classList.remove("display-none");
+    btnPlayAgain.classList.toggle("display-active");
+    ulList.classList.toggle("display-flex");
+    alert.textContent = "";
+    console.log(drawnNumbers);
+  } else {
+    alert.textContent = "Podaj wszystkie liczby";
+  }
 }
 // Play Again
-function playAgain() {}
+function playAgain() {
+  for (let i = 0; i < drawnNum.length; i++) {
+    drawnNum[i].textContent = null;
+    drawnNumbers.pop();
+  }
+  console.log(drawnNumbers);
+  btnCheck.classList.remove("display-none");
+  btnCheck.classList.toggle("display-active");
+  btnPlayAgain.classList.remove("display-active");
+  btnPlayAgain.classList.toggle("display-none");
+  ulList.classList.remove("display-flex");
+}
 //AddEventListener random numbers in bet
 
 btnLucky.addEventListener("click", hitOrMiss);
 btnRefreshNumb.addEventListener("click", refresh);
 btnDeleteNumb.addEventListener("click", del);
 btnCheck.addEventListener("click", draw);
-btnCheck.addEventListener("click", playAgain);
+btnPlayAgain.addEventListener("click", playAgain);
