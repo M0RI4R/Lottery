@@ -34,18 +34,26 @@ const newHit = [];
 
 function hitOrMiss() {
   for (let i = 0; i < hit.length; i++) {
-    if (btnLucky.checked) {
-      let randomResult = Math.floor(Math.random() * 49 + 1);
-      hit[i].value = randomResult;
-      newHit.push(randomResult);
-    } else {
-      for (let i = 0; i < hit.length; i++) {
-        hit[i].value = null;
-        newHit.pop();
+    newHit.pop();
+  }
+  if (btnLucky.checked) {
+    while (newHit.length < 6) {
+      let num = Math.floor(Math.random() * 49) + 1;
+      if (!newHit.includes(num)) {
+        newHit.push(num);
+        for (let i = 0; i < newHit.length; i++) {
+          hit[i].value = newHit[i];
+        }
       }
+    }
+  } else {
+    for (let i = 0; i < hit.length; i++) {
+      hit[i].value = null;
+      newHit.pop();
     }
   }
   console.log(newHit);
+  console.log(hit);
 }
 
 // Refresh function if btnLucky ON
@@ -54,14 +62,19 @@ function refresh() {
     for (let i = 0; i < hit.length; i++) {
       newHit.pop();
     }
-    for (let i = 0; i < hit.length; i++) {
-      let randomResult = Math.floor(Math.random() * 49 + 1);
-      hit[i].value = randomResult;
-      newHit.push(randomResult);
+    while (newHit.length < 6) {
+      let num = Math.floor(Math.random() * 49) + 1;
+      if (!newHit.includes(num)) {
+        newHit.push(num);
+        for (let i = 0; i < newHit.length; i++) {
+          hit[i].value = newHit[i];
+        }
+      }
     }
   }
 
   console.log(newHit);
+  console.log(hit);
 }
 
 //Delete user numbers
@@ -85,23 +98,54 @@ function emptyInput() {
   }
 }
 
+function checkDuplicates(arr) {
+  // Create an empty object to store each element and its count
+  const counts = {};
+
+  // Iterate through each element in the array
+  for (let i = 0; i < arr.length; i++) {
+    // If the element is not in the object, add it with a count of 1
+    if (!counts[arr[i]]) {
+      counts[arr[i]] = 1;
+    }
+    // If the element is already in the object, increment its count
+    else {
+      counts[arr[i]]++;
+    }
+  }
+
+  // Check if any element has a count greater than 1 (indicating a duplicate)
+  for (const element in counts) {
+    if (counts[element] > 1) {
+      return true; // Found a duplicate, return true
+    }
+  }
+
+  // No duplicates found, return false
+  return false;
+}
+
 // Draw numbers with button "Gram"
 const drawnNum = [first, second, third, fourth, fifth, sixth];
 const drawnNumbers = [];
 let compareArray = [];
 function draw() {
   emptyInput();
+
   console.log(confirm);
-  if (confirm == false) {
-    for (let i = 0; i < drawnNum.length; i++) {
-      let randomResult = Math.floor(Math.random() * 49 + 1);
-      drawnNum[i].textContent = randomResult;
-      if (drawnNum.includes(randomResult)) {
-        console.log(drawnNum);
-        drawnNum.pop();
-        return draw();
+  for (let i = 0; i < hit.length; i++) {
+    newHit[i] = hit[i].valueAsNumber;
+  }
+  console.log(checkDuplicates(newHit));
+  if (confirm === false && checkDuplicates(newHit) === false) {
+    while (drawnNumbers.length < 6) {
+      let num = Math.floor(Math.random() * 49) + 1;
+      if (!drawnNumbers.includes(num)) {
+        drawnNumbers.push(num);
+        for (let i = 0; i < newHit.length; i++) {
+          drawnNum[i].textContent = drawnNumbers[i];
+        }
       }
-      drawnNumbers.push(randomResult);
     }
 
     // Comparing two arrays, user chosen number and drawn numbers
