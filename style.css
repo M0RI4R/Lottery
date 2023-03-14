@@ -168,7 +168,7 @@ input::-webkit-inner-spin-button {
   color: aqua;
 }
 
-.numbers li input {
+.numbers input {
   text-align: center;
   width: 30px;
   height: 30px;
