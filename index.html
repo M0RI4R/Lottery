@@ -18,8 +18,11 @@
         <header>
           <img src="images/lottery.jpg" />
           <div class="description">
-            <h1>Wybierz swoje liczby</h1>
-            <p>Wybierz 6 z 49 liczb</p>
+            <h1>Wybierz swoje liczby.</h1>
+            <p>
+              Wybierz 6 z 49 liczb. Chcesz więcej? Graj systemem i typuj od 7 do
+              10 liczb.
+            </p>
           </div>
           <ul class="winning-numbers">
             <li class="first-num"></li>
@@ -41,12 +44,12 @@
             </li>
           </ul>
           <ul>
-            <label for="gameType">System</label>
-            <select name="gameType" id="gameType">
+            <label for="game-type">System</label>
+            <select name="game-type" id="game-type">
               <option>Bez systemu</option>
               <option>7 liczb(7 zakładów prostych)</option>
               <option>8 liczb(28 zakładów prostych)</option>
-              <option>9 liczb(84 zakładyproste)</option>
+              <option>9 liczb(84 zakłady proste)</option>
               <option>10 liczb(210 zakładów prostych)</option>
             </select>
           </ul>
@@ -64,20 +67,32 @@
             <input class="five" type="number" nim="1" max="49" />
 
             <input class="six" type="number" nim="1" max="49" />
+
+            <input class="seven" type="number" nim="1" max="49" />
+
+            <input class="eight" type="number" nim="1" max="49" />
+
+            <input class="nine" type="number" nim="1" max="49" />
+
+            <input class="ten" type="number" nim="1" max="49" />
           </form>
           <ul class="edit-zone">
             <li>
-              <button class="changeNumbers" type="button">
+              <button
+                class="changeNumbers"
+                type="button"
+                title="Wylosuj ponownie liczby"
+              >
                 <i class="fa-solid fa-rotate"></i>
               </button>
             </li>
             <li>
-              <button type="button" class="writeNumbers">
+              <button type="button" class="writeNumbers" title="Zmień liczby">
                 <i class="fa-regular fa-pen-to-square"></i>
               </button>
             </li>
             <li>
-              <button type="button" class="deleteNumbers">
+              <button type="button" class="deleteNumbers" title="Usuń liczby">
                 <i class="fa-regular fa-trash-can"></i>
               </button>
             </li>

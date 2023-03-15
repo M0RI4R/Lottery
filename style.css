@@ -125,6 +125,7 @@ input::-webkit-inner-spin-button {
   flex-grow: 1;
   max-width: 300px;
   justify-content: space-around;
+  align-items: center;
   padding: 10px;
 }
 .edit-zone {
@@ -140,6 +141,7 @@ input::-webkit-inner-spin-button {
   font-size: 30px;
   background: none;
   border: none;
+  transition: all ease-in-out 0.2s;
 }
 
 .check-btn:hover {
@@ -188,6 +190,11 @@ input::-webkit-inner-spin-button {
 .play-again-btn {
   display: none;
 }
+
+.seven,
+.eight,
+.nine,
+.ten,
 .display-none {
   display: none;
 }
@@ -195,7 +202,7 @@ input::-webkit-inner-spin-button {
   display: inline-block;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 460px) {
   .bet-zone {
     flex-direction: column;
   }

@@ -6,6 +6,9 @@ let btnDeleteNumb = document.querySelector(".deleteNumbers");
 let btnCheck = document.querySelector(".check-btn");
 let btnPlayAgain = document.querySelector(".play-again-btn");
 
+// Selection type of the game
+let select = document.querySelector("select");
+
 // POPUPS
 let description = document.querySelector(".description");
 let ulList = document.querySelector(".winning-numbers");
@@ -13,6 +16,7 @@ let alert = document.querySelector(".alert");
 let hitNumbers = document.querySelector(".hit-numbers");
 
 //Drown Numbers for lottery
+let form = document.querySelector(".numbers");
 let first = document.querySelector(".first-num");
 let second = document.querySelector(".second-num");
 let third = document.querySelector(".third-num");
@@ -27,9 +31,13 @@ let three = document.querySelector(".three");
 let four = document.querySelector(".four");
 let five = document.querySelector(".five");
 let six = document.querySelector(".six");
+let seven = document.querySelector(".seven");
+let eight = document.querySelector(".eight");
+let nine = document.querySelector(".nine");
+let ten = document.querySelector(".ten");
 
 // Hit or miss function
-const hit = [one, two, three, four, five, six];
+let hit = [one, two, three, four, five, six];
 const newHit = [];
 
 function hitOrMiss() {
@@ -37,7 +45,7 @@ function hitOrMiss() {
     newHit.pop();
   }
   if (btnLucky.checked) {
-    while (newHit.length < 6) {
+    while (newHit.length < hit.length) {
       let num = Math.floor(Math.random() * 49) + 1;
       if (!newHit.includes(num)) {
         newHit.push(num);
@@ -52,8 +60,6 @@ function hitOrMiss() {
       newHit.pop();
     }
   }
-  console.log(newHit);
-  console.log(hit);
 }
 
 // Refresh function if btnLucky ON
@@ -62,7 +68,7 @@ function refresh() {
     for (let i = 0; i < hit.length; i++) {
       newHit.pop();
     }
-    while (newHit.length < 6) {
+    while (newHit.length < hit.length) {
       let num = Math.floor(Math.random() * 49) + 1;
       if (!newHit.includes(num)) {
         newHit.push(num);
@@ -132,17 +138,16 @@ let compareArray = [];
 function draw() {
   emptyInput();
 
-  console.log(confirm);
   for (let i = 0; i < hit.length; i++) {
     newHit[i] = hit[i].valueAsNumber;
   }
-  console.log(checkDuplicates(newHit));
+
   if (confirm === false && checkDuplicates(newHit) === false) {
     while (drawnNumbers.length < 6) {
       let num = Math.floor(Math.random() * 49) + 1;
       if (!drawnNumbers.includes(num)) {
         drawnNumbers.push(num);
-        for (let i = 0; i < newHit.length; i++) {
+        for (let i = 0; i < drawnNum.length; i++) {
           drawnNum[i].textContent = drawnNumbers[i];
         }
       }
@@ -185,6 +190,64 @@ function playAgain() {
   description.classList.toggle("display-none");
   ulList.classList.toggle("display-flex");
 }
+
+// Add extra numbers in bet
+
+function addInputToHit() {
+  if (select.value == "Bez systemu") {
+    hit.length = 6;
+    newHit.length = 6;
+    hit = [one, two, three, four, five, six];
+    console.log(hit);
+    console.log(newHit);
+    seven.classList.remove("display-active");
+    eight.classList.remove("display-active");
+    nine.classList.remove("display-active");
+    ten.classList.remove("display-active");
+  } else if (select.value == "7 liczb(7 zakładów prostych)") {
+    hit.length = 7;
+    newHit.length = 7;
+    hit = [one, two, three, four, five, six, seven];
+
+    seven.classList.add("display-active");
+    eight.classList.remove("display-active");
+    nine.classList.remove("display-active");
+    ten.classList.remove("display-active");
+    console.log(hit);
+    console.log(newHit);
+  } else if (select.value == "8 liczb(28 zakładów prostych)") {
+    hit.length = 8;
+    newHit.length = 8;
+    hit = [one, two, three, four, five, six, seven, eight];
+    console.log(hit);
+    console.log(newHit);
+    eight.classList.add("display-active");
+    seven.classList.add("display-active");
+    nine.classList.remove("display-active");
+    ten.classList.remove("display-active");
+  } else if (select.value == "9 liczb(84 zakłady proste)") {
+    hit.length = 9;
+    newHit.length = 9;
+    hit = [one, two, three, four, five, six, seven, eight, nine];
+    console.log(hit);
+    console.log(newHit);
+    seven.classList.add("display-active");
+    eight.classList.add("display-active");
+    nine.classList.add("display-active");
+    ten.classList.remove("display-active");
+  } else if (select.value == "10 liczb(210 zakładów prostych)") {
+    hit.length = 10;
+    newHit.length = 10;
+    hit = [one, two, three, four, five, six, seven, eight, nine, ten];
+    console.log(hit);
+    console.log(newHit);
+    seven.classList.add("display-active");
+    eight.classList.add("display-active");
+    nine.classList.add("display-active");
+    ten.classList.add("display-active");
+  }
+}
+
 //AddEventListeners
 
 btnLucky.addEventListener("click", hitOrMiss);
@@ -192,3 +255,4 @@ btnRefreshNumb.addEventListener("click", refresh);
 btnDeleteNumb.addEventListener("click", del);
 btnCheck.addEventListener("click", draw);
 btnPlayAgain.addEventListener("click", playAgain);
+select.addEventListener("change", addInputToHit);
