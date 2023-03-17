@@ -19,6 +19,7 @@ body {
   max-width: 500px;
   margin-right: auto;
   margin-left: auto;
+  position: relative;
 }
 .main-content {
   display: flex;
@@ -108,7 +109,7 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
+.bet-zone-popup,
 .bet-zone {
   display: flex;
   flex-wrap: wrap;
@@ -120,14 +121,15 @@ input::-webkit-inner-spin-button {
 .bet-zone ul {
   align-items: center;
 }
+.numbers-popup,
 .numbers {
   display: flex;
   flex-grow: 1;
-  max-width: 300px;
   justify-content: space-around;
   align-items: center;
   padding: 10px;
 }
+
 .edit-zone {
   display: flex;
   gap: 10px;
@@ -142,6 +144,9 @@ input::-webkit-inner-spin-button {
   background: none;
   border: none;
   transition: all ease-in-out 0.2s;
+}
+.changeNumbers {
+  display: none;
 }
 
 .check-btn:hover {
@@ -169,13 +174,15 @@ input::-webkit-inner-spin-button {
 .deleteNumbers:active {
   color: aqua;
 }
-
+.numbers-popup input,
+.number-button,
 .numbers input {
   text-align: center;
   width: 30px;
   height: 30px;
   border-radius: 50%;
 }
+.save-btn,
 .play-again-btn,
 .check-btn {
   font-size: 50px;
@@ -202,7 +209,44 @@ input::-webkit-inner-spin-button {
   display: inline-block;
 }
 
-@media (max-width: 460px) {
+/* POPUP SELECT NUMBERS */
+h2 {
+  margin: 21px 0 15px 30px;
+}
+.bet-zone-popup {
+  flex-direction: column;
+}
+.numbers-popup {
+  padding-bottom: 30px;
+}
+.modal-content {
+  max-width: 480px;
+  position: absolute;
+  top: 100%;
+
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 15px;
+}
+
+.picker {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.save-btn {
+  float: right;
+  margin: 0 30px 30px 0;
+  font-size: 25px;
+}
+.close-xmark {
+  position: absolute;
+  top: 21px;
+  right: 30px;
+  font-size: 20px;
+}
+@media (max-width: 482px) {
   .bet-zone {
     flex-direction: column;
   }
