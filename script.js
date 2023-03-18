@@ -7,6 +7,7 @@ let btnCheck = document.querySelector(".check-btn");
 let btnPlayAgain = document.querySelector(".play-again-btn");
 let btnCloseForm = document.querySelector(".close-form");
 let btnSave = document.querySelector(".save-btn");
+let numberButton = document.querySelectorAll(".number-button");
 
 // Selection type of the game 6 or 7 or 8 or 9 or 10 numbers
 let select = document.querySelector("select");
@@ -17,6 +18,9 @@ let ulList = document.querySelector(".winning-numbers");
 let alert = document.querySelector(".alert");
 let hitNumbers = document.querySelector(".hit-numbers");
 let writeNewNumbers = document.querySelector(".modal-content");
+let picker = document.querySelector(".picker");
+let index; // index of first NULL value in hitPopup array
+let alertPopup = document.querySelector(".all-numbers-popup");
 
 //Drown Numbers for lottery
 
@@ -40,11 +44,12 @@ let eight = document.querySelectorAll(".eight");
 let nine = document.querySelectorAll(".nine");
 let ten = document.querySelectorAll(".ten");
 
-// Hit or miss function
+//Arrays to work with
 let hit = [one[0], two[0], three[0], four[0], five[0], six[0]];
 let hitPopup = [one[1], two[1], three[1], four[1], five[1], six[1]];
 let newHit = [];
 
+// Hit or miss function
 function hitOrMiss() {
   for (let i = 0; i < hit.length; i++) {
     newHit.pop();
@@ -96,6 +101,7 @@ function del() {
   for (let i = 0; i < hit.length; i++) {
     hit[i].value = null;
   }
+  picker.classList.remove("button-border");
 }
 
 //Checking if all user numbers imputs has a value and it's from 1 to 49
@@ -164,7 +170,7 @@ function draw() {
         }
       }
     }
-    console.log(hit);
+
     // Comparing two arrays, user chosen number and drawn numbers
     compareArray = newHit.filter((e) => drawnNumbers.includes(e));
 
@@ -355,7 +361,6 @@ function addInputToHit() {
 }
 
 // Show popup with array of numbers to select numbers
-
 const writeNumbers = () => {
   writeNewNumbers.classList.toggle("display-none");
   for (let i = 0; i < hit.length; i++) {
@@ -363,25 +368,50 @@ const writeNumbers = () => {
     newHit[i] = hit[i];
   }
   console.log(hitPopup);
+  console.log(newHit);
+  console.log(hit);
 };
 
 // Close popup with array of numbers. Don't save changes
 const closeForm = () => {
   writeNewNumbers.classList.toggle("display-none");
 };
+
 // Close popup with array of numbers. Save changes
 const saveChanges = () => {
   writeNewNumbers.classList.toggle("display-none");
-
   for (let i = 0; i < hitPopup.length; i++) {
     hit[i].value = hitPopup[i].value;
     newHit[i].value = hit[i].value;
   }
 };
+
+// Check with button was clicked and add value to user numbers
+
+const checkClick = (e) => {
+  // for (let i = 0; i < hitPopup.length; i++) {
+  //   if (e.target.matches(".number-button")) {
+  //     e.target.classList.toggle("button-border");
+  //   }
+  // }
+  for (let i = 0; i < hitPopup.length; i++) {
+    if (hitPopup[i].value === "") {
+      hitPopup[i].value = e.target.value;
+      e.target.classList.toggle("button-border");
+      return;
+    } else if (hitPopup[i].value.includes(e.target.value)) {
+      hitPopup[i].value = null;
+      console.log(i);
+      console.log(e.target.value);
+      e.target.classList.toggle("button-border");
+      return;
+    }
+  }
+};
+
 //AddEventListeners
 
 btnLucky.addEventListener("click", hitOrMiss);
-
 btnRefreshNumb.addEventListener("click", refresh);
 btnWriteNumb.addEventListener("click", writeNumbers);
 btnCloseForm.addEventListener("click", closeForm);
@@ -390,3 +420,4 @@ btnDeleteNumb.addEventListener("click", del);
 btnCheck.addEventListener("click", draw);
 btnPlayAgain.addEventListener("click", playAgain);
 select.addEventListener("change", addInputToHit);
+picker.addEventListener("click", checkClick);

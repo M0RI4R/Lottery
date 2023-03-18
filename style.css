@@ -246,6 +246,9 @@ h2 {
   right: 30px;
   font-size: 20px;
 }
+.button-border {
+  border: 1px solid #ebb51e;
+}
 @media (max-width: 482px) {
   .bet-zone {
     flex-direction: column;
