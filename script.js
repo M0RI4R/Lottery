@@ -224,7 +224,7 @@ function addInputToHit() {
     hit.length = 6;
     newHit.length = 6;
     hitPopup.length = 6;
-    hit = [one[0], two[0], three[0], four[0], five[0], six[0]];
+    hit = [one[0].value, two[0], three[0], four[0], five[0], six[0]];
     hitPopup = [one[1], two[1], three[1], four[1], five[1], six[1]];
     console.log(hit);
     console.log(newHit);
@@ -362,11 +362,25 @@ function addInputToHit() {
 
 // Show popup with array of numbers to select numbers
 const writeNumbers = () => {
+  numberButton.forEach((button) => {
+    const value = parseInt(button.value);
+    if (newHit.includes(value)) {
+      button.classList.add("button-border");
+    }
+  });
+
   writeNewNumbers.classList.toggle("display-none");
   for (let i = 0; i < hit.length; i++) {
     hitPopup[i].value = hit[i].value;
-    newHit[i] = hit[i];
+    newHit[i] = parseInt(hit[i].value);
   }
+
+  if (newHit.includes(NaN)) {
+    alertPopup.textContent = "Podaj wszystkie liczby";
+  } else {
+    alertPopup.textContent = "";
+  }
+
   console.log(hitPopup);
   console.log(newHit);
   console.log(hit);
@@ -375,6 +389,12 @@ const writeNumbers = () => {
 // Close popup with array of numbers. Don't save changes
 const closeForm = () => {
   writeNewNumbers.classList.toggle("display-none");
+  numberButton.forEach((button) => {
+    const value = parseInt(button.value);
+    if (newHit.includes(value)) {
+      button.classList.remove("button-border");
+    }
+  });
 };
 
 // Close popup with array of numbers. Save changes
@@ -382,31 +402,62 @@ const saveChanges = () => {
   writeNewNumbers.classList.toggle("display-none");
   for (let i = 0; i < hitPopup.length; i++) {
     hit[i].value = hitPopup[i].value;
-    newHit[i].value = hit[i].value;
+    newHit[i] = parseInt(hit[i].value);
   }
+
+  numberButton.forEach((button) => {
+    const value = parseInt(button.value);
+    if (newHit.includes(value)) {
+      button.classList.remove("button-border");
+    }
+  });
+  console.log(hitPopup);
+  console.log(newHit);
+  console.log(hit);
 };
 
 // Check with button was clicked and add value to user numbers
+// function hasDuplicates(array) {
+//   for (let i = 0; i < array.length; i++) {
+//     for (let j = i + 1; j < array.length; j++) {
+//       if (array[i] === array[j]) {
+//         return true; // Found a duplicate
+//       }
+//     }
+//   }
+//   return false; // No duplicates found
+// }
 
 const checkClick = (e) => {
-  // for (let i = 0; i < hitPopup.length; i++) {
-  //   if (e.target.matches(".number-button")) {
-  //     e.target.classList.toggle("button-border");
-  //   }
-  // }
   for (let i = 0; i < hitPopup.length; i++) {
-    if (hitPopup[i].value === "") {
+    if (
+      hitPopup[i].value === "" &&
+      !e.target.classList.contains("button-border")
+    ) {
+      alertPopup.textContent = "Podaj wszystkie liczby";
       hitPopup[i].value = e.target.value;
       e.target.classList.toggle("button-border");
-      return;
-    } else if (hitPopup[i].value.includes(e.target.value)) {
-      hitPopup[i].value = null;
       console.log(i);
       console.log(e.target.value);
+      return;
+    } else if (e.target.value === hitPopup[i].value) {
+      hitPopup[i].value = null;
+      alertPopup.textContent = "Podaj wszystkie liczby";
       e.target.classList.toggle("button-border");
       return;
+    } else {
+      alertPopup.textContent = "";
     }
   }
+  // hitPopup.forEach((el) => {
+  //   const value = el.value;
+  //   if (value === "") {
+  //     alertPopup.textContent = "Podaj wszystkie liczby";
+  //     console.log(hitPopup);
+  //   } else {
+  //     alertPopup.textContent = "xx";
+  //   }
+  // });
 };
 
 //AddEventListeners

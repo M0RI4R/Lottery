@@ -9,7 +9,7 @@
   margin: 0;
 }
 body {
-  background-image: url(/images/hd-wallpaper-g3e4759a03_1920.jpg);
+  background-image: url(images/hd-wallpaper-g3e4759a03_1920.jpg);
 }
 
 .lottery-container {
@@ -108,6 +108,9 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+input {
+  -moz-appearance: textfield;
 }
 .bet-zone-popup,
 .bet-zone {
