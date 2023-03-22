@@ -450,12 +450,12 @@ const checkClick = (e) => {
 // Animated Balls in background
 
 const ballImages = [
-  "images/ball.png",
-  "images/1.png",
-  "images/25.png",
-  "images/10.png",
-  "images/32.png",
-  "images/48.png",
+  "./images/ball.png",
+  "./images/1.png",
+  "./images/25.png",
+  "./images/10.png",
+  "./images/32.png",
+  "./images/48.png",
 ];
 
 function renderBallsConteiner() {
