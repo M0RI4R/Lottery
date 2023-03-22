@@ -80,7 +80,7 @@ header {
 .cover {
   height: 300px;
   background-size: cover;
-  background-image: url(./images/logo3.png);
+  background-image: url(images/logo3.png);
 }
 .winning-numbers {
   display: none;
