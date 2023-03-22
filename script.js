@@ -362,13 +362,6 @@ function addInputToHit() {
 
 // Show popup with array of numbers to select numbers
 const writeNumbers = () => {
-  numberButton.forEach((button) => {
-    const value = parseInt(button.value);
-    if (newHit.includes(value)) {
-      button.classList.add("button-border");
-    }
-  });
-
   writeNewNumbers.classList.toggle("display-none");
   for (let i = 0; i < hit.length; i++) {
     hitPopup[i].value = hit[i].value;
@@ -380,6 +373,12 @@ const writeNumbers = () => {
   } else {
     alertPopup.textContent = "";
   }
+  numberButton.forEach((button) => {
+    const value = parseInt(button.value);
+    if (newHit.includes(value)) {
+      button.classList.add("button-border");
+    }
+  });
 
   console.log(hitPopup);
   console.log(newHit);
@@ -434,7 +433,6 @@ const checkClick = (e) => {
       hitPopup[i].value === "" &&
       !e.target.classList.contains("button-border")
     ) {
-      alertPopup.textContent = "Podaj wszystkie liczby";
       hitPopup[i].value = e.target.value;
       e.target.classList.toggle("button-border");
       console.log(i);
@@ -442,23 +440,46 @@ const checkClick = (e) => {
       return;
     } else if (e.target.value === hitPopup[i].value) {
       hitPopup[i].value = null;
-      alertPopup.textContent = "Podaj wszystkie liczby";
       e.target.classList.toggle("button-border");
-      return;
-    } else {
       alertPopup.textContent = "";
+      return;
     }
   }
-  // hitPopup.forEach((el) => {
-  //   const value = el.value;
-  //   if (value === "") {
-  //     alertPopup.textContent = "Podaj wszystkie liczby";
-  //     console.log(hitPopup);
-  //   } else {
-  //     alertPopup.textContent = "xx";
-  //   }
-  // });
 };
+
+// Animated Balls in background
+
+const ballImages = [
+  "/images/ball.png",
+  "/images/1.png",
+  "/images/25.png",
+  "/images/10.png",
+  "/images/32.png",
+  "/images/48.png",
+];
+
+function renderBallsConteiner() {
+  const ballsConteiner = document.createElement("div");
+  ballsConteiner.classList = "balls";
+  document.body.appendChild(ballsConteiner);
+  return ballsConteiner;
+}
+
+function renderBall(ballsConteiner) {
+  const ball = document.createElement("div");
+  ball.classList = "ball-one";
+  ballsConteiner.appendChild(ball);
+
+  const img = document.createElement("img");
+  img.src = ballImages[Math.floor(Math.random() * ballImages.length)];
+  img.style.top = `${Math.random() * 100}%`;
+  ball.appendChild(img);
+  ballsConteiner.appendChild(ball);
+  setTimeout(renderBall, 2000, ballsConteiner);
+}
+
+const ball = renderBallsConteiner();
+renderBall(ball);
 
 //AddEventListeners
 

@@ -9,17 +9,63 @@
   margin: 0;
 }
 body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   background-image: url(images/hd-wallpaper-g3e4759a03_1920.jpg);
+  background-size: cover;
+}
+.balls {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+.ball-one {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  animation: fall 5s 0s infinite ease-in-out alternate;
+}
+.ball-one img {
+  position: absolute;
+  animation: bounce 8s 0s infinite linear alternate;
+  max-width: 100px;
 }
 
+@keyframes bounce {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 92%;
+  }
+}
+@keyframes fall {
+  from {
+    top: 0%;
+  }
+  to {
+    top: 89%;
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .lottery-container {
   padding: 10px;
   border-radius: 6px;
   background-color: white;
   max-width: 500px;
-  margin-right: auto;
-  margin-left: auto;
   position: relative;
+  z-index: 1;
 }
 .main-content {
   display: flex;
@@ -30,6 +76,11 @@ header {
   flex-direction: column;
   justify-content: center;
   margin-bottom: 20px;
+}
+.cover {
+  height: 300px;
+  background-size: cover;
+  background-image: url(./images/logo3.png);
 }
 .winning-numbers {
   display: none;
@@ -225,8 +276,7 @@ h2 {
 .modal-content {
   max-width: 480px;
   position: absolute;
-  top: 100%;
-
+  top: 10%;
   background-color: #fff;
   border: 1px solid #eee;
   border-radius: 15px;
@@ -252,8 +302,25 @@ h2 {
 .button-border {
   border: 1px solid #ebb51e;
 }
+
+@media (max-width: 500px) {
+  .cover {
+    height: 260px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
 @media (max-width: 482px) {
   .bet-zone {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 382px) {
+  .winning-numbers li {
+    max-width: 50px;
+    max-height: 50px;
+    line-height: 50px;
   }
 }
