@@ -19,7 +19,6 @@ let alert = document.querySelector(".alert");
 let hitNumbers = document.querySelector(".hit-numbers");
 let writeNewNumbers = document.querySelector(".modal-content");
 let picker = document.querySelector(".picker");
-let index; // index of first NULL value in hitPopup array
 let alertPopup = document.querySelector(".all-numbers-popup");
 
 //Drown Numbers for lottery
@@ -49,7 +48,7 @@ let hit = [one[0], two[0], three[0], four[0], five[0], six[0]];
 let hitPopup = [one[1], two[1], three[1], four[1], five[1], six[1]];
 let newHit = [];
 
-// Hit or miss function
+// --------------------------------------------------------------Hit or miss function
 function hitOrMiss() {
   for (let i = 0; i < hit.length; i++) {
     newHit.pop();
@@ -75,7 +74,7 @@ function hitOrMiss() {
   console.log(hit);
 }
 
-// Refresh function if btnLucky ON
+// --------------------------------------------------Refresh function if btnLucky ON
 function refresh() {
   if (btnLucky.checked) {
     for (let i = 0; i < hit.length; i++) {
@@ -96,7 +95,7 @@ function refresh() {
   console.log(hit);
 }
 
-//Delete user numbers
+//----------------------------------------------Delete user numbers
 function del() {
   for (let i = 0; i < hit.length; i++) {
     hit[i].value = null;
@@ -104,7 +103,7 @@ function del() {
   picker.classList.remove("button-border");
 }
 
-//Checking if all user numbers imputs has a value and it's from 1 to 49
+//--------------------------------------------Checking if all user numbers imputs has a value and it's from 1 to 49
 let confirm;
 function emptyInput() {
   if (
@@ -117,35 +116,26 @@ function emptyInput() {
     confirm = false;
   }
 }
-
+//--------------------------------------------------Check-for-Duplicates
 function checkDuplicates(arr) {
-  // Create an empty object to store each element and its count
   const counts = {};
 
-  // Iterate through each element in the array
   for (let i = 0; i < arr.length; i++) {
-    // If the element is not in the object, add it with a count of 1
     if (!counts[arr[i]]) {
       counts[arr[i]] = 1;
-    }
-    // If the element is already in the object, increment its count
-    else {
+    } else {
       counts[arr[i]]++;
     }
   }
-
-  // Check if any element has a count greater than 1 (indicating a duplicate)
   for (const element in counts) {
     if (counts[element] > 1) {
-      return true; // Found a duplicate, return true
+      return true;
     }
   }
-
-  // No duplicates found, return false
   return false;
 }
 
-// Draw numbers with button "Gram"
+// -----------------------------------------------------Draw numbers with button "Gram"
 const drawnNum = [first, second, third, fourth, fifth, sixth];
 const drawnNumbers = [];
 let compareArray = [];
@@ -171,7 +161,7 @@ function draw() {
       }
     }
 
-    // Comparing two arrays, user chosen number and drawn numbers
+    // ----------------------------------------Comparing two arrays, user chosen number and drawn numbers
     compareArray = newHit.filter((e) => drawnNumbers.includes(e));
 
     //
@@ -192,14 +182,14 @@ function draw() {
   }
 }
 
-// Play Again with button "Zagraj ponownie"
+// ----------------------------------------------Play Again with button "Zagraj ponownie"
 function playAgain() {
   for (let i = 0; i < drawnNum.length; i++) {
     drawnNum[i].textContent = null;
     drawnNumbers.pop();
   }
 
-  //Enable interaction after click button "Zagraj ponownie"
+  //----------------------------------------------Enable interaction after click button "Zagraj ponownie"
   btnRefreshNumb.disabled = false;
   btnWriteNumb.disabled = false;
   btnDeleteNumb.disabled = false;
@@ -217,7 +207,7 @@ function playAgain() {
   ulList.classList.toggle("display-flex");
 }
 
-// Add extra slots for numbers in bet
+//------------------------------------------------ Add extra slots for numbers in bet
 
 function addInputToHit() {
   if (select.value == "Bez systemu") {
@@ -360,7 +350,7 @@ function addInputToHit() {
   }
 }
 
-// Show popup with array of numbers to select numbers
+//---------------------------------------- Show popup with array of numbers to select numbers
 const writeNumbers = () => {
   writeNewNumbers.classList.toggle("display-none");
   for (let i = 0; i < hit.length; i++) {
@@ -385,7 +375,7 @@ const writeNumbers = () => {
   console.log(hit);
 };
 
-// Close popup with array of numbers. Don't save changes
+// --------------------------------------Close popup with array of numbers. Don't save changes
 const closeForm = () => {
   writeNewNumbers.classList.toggle("display-none");
   numberButton.forEach((button) => {
@@ -396,7 +386,7 @@ const closeForm = () => {
   });
 };
 
-// Close popup with array of numbers. Save changes
+//-------------------------------------- Close popup with array of numbers. Save changes
 const saveChanges = () => {
   writeNewNumbers.classList.toggle("display-none");
   for (let i = 0; i < hitPopup.length; i++) {
@@ -415,17 +405,7 @@ const saveChanges = () => {
   console.log(hit);
 };
 
-// Check with button was clicked and add value to user numbers
-// function hasDuplicates(array) {
-//   for (let i = 0; i < array.length; i++) {
-//     for (let j = i + 1; j < array.length; j++) {
-//       if (array[i] === array[j]) {
-//         return true; // Found a duplicate
-//       }
-//     }
-//   }
-//   return false; // No duplicates found
-// }
+// -------------------------------------Check with button was clicked and add value to user numbers
 
 const checkClick = (e) => {
   for (let i = 0; i < hitPopup.length; i++) {
@@ -447,7 +427,7 @@ const checkClick = (e) => {
   }
 };
 
-// Animated Balls in background
+//------------------------------------------ Animated Balls in background
 
 const ballImages = [
   "./images/ball.png",
@@ -464,7 +444,7 @@ function renderBallsConteiner() {
   document.body.appendChild(ballsConteiner);
   return ballsConteiner;
 }
-
+let num = 0;
 function renderBall(ballsConteiner) {
   const ball = document.createElement("div");
   ball.classList = "ball-one";
@@ -475,7 +455,11 @@ function renderBall(ballsConteiner) {
   img.style.top = `${Math.random() * 100}%`;
   ball.appendChild(img);
   ballsConteiner.appendChild(ball);
-  setTimeout(renderBall, 2000, ballsConteiner);
+  num++;
+  console.log(num);
+  let timeoutId = setTimeout(renderBall, 2000, ballsConteiner);
+
+  if (num >= 49) clearTimeout(timeoutId);
 }
 
 const ball = renderBallsConteiner();
