@@ -71,7 +71,6 @@ function hitOrMiss() {
       newHit.pop();
     }
   }
-  console.log(hit);
 }
 
 // --------------------------------------------------Refresh function if btnLucky ON
@@ -90,9 +89,6 @@ function refresh() {
       }
     }
   }
-
-  console.log(newHit);
-  console.log(hit);
 }
 
 //----------------------------------------------Delete user numbers
@@ -196,7 +192,6 @@ function playAgain() {
   select.disabled = false;
   btnLucky.disabled = false;
 
-  console.log(drawnNumbers);
   hitNumbers.textContent = "";
   hitNumbers.classList.toggle("display-active");
   btnCheck.classList.remove("display-none");
@@ -370,9 +365,7 @@ const writeNumbers = () => {
     }
   });
 
-  console.log(hitPopup);
   console.log(newHit);
-  console.log(hit);
 };
 
 // --------------------------------------Close popup with array of numbers. Don't save changes
@@ -400,9 +393,8 @@ const saveChanges = () => {
       button.classList.remove("button-border");
     }
   });
-  console.log(hitPopup);
+
   console.log(newHit);
-  console.log(hit);
 };
 
 // -------------------------------------Check with button was clicked and add value to user numbers
@@ -456,7 +448,7 @@ function renderBall(ballsConteiner) {
   ball.appendChild(img);
   ballsConteiner.appendChild(ball);
   num++;
-  console.log(num);
+
   let timeoutId = setTimeout(renderBall, 2000, ballsConteiner);
 
   if (num >= 49) clearTimeout(timeoutId);
