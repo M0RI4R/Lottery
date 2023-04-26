@@ -26,6 +26,10 @@ works.
 <ul>
 <li>Choose the system how many numbers you want to pick to increase your chances. 6-7-8-9-10 (App allways draw 6 numbers)</li>
 <li>Write your numbers in inputs manualy or use button "zmień liczby" to pick numbers by clicking with buttons with numbers </li>
+
+![image](https://user-images.githubusercontent.com/118670417/234579246-0520d0f0-6cd3-4353-97bb-ca4a107ad854.png)
+
+
 <li>Optional use "Chybił trafił" checkbox, and app will find random numbers for you</li>
 <li>Click button "Gram"</li>
 </ul>
