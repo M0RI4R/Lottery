@@ -20,6 +20,7 @@ I,ve learnt how :
 works.
 
 ### How to play
+![image](https://user-images.githubusercontent.com/118670417/234578005-dd7eedaa-2ae9-4da4-9213-6efaee0d6e28.png)
 
 
 <ul>
@@ -28,3 +29,7 @@ works.
 <li>Optional use "Chybił trafił" checkbox, and app will find random numbers for you</li>
 <li>Click button "Gram"</li>
 </ul>
+
+![image](https://user-images.githubusercontent.com/118670417/234578322-72b5ab95-a44b-441f-bb8f-64688812d62f.png)
+
+
