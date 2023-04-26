@@ -19,6 +19,16 @@ I,ve learnt how :
 </ul>
 works.
 
+### Bugs
+<ul>
+  <li>Sometimes after switching cart of a browser yellow balls on background apears not one at every two seconds byt several at one time </li>
+</ul>
+
+### Things to improve
+<ul>
+  <li>Graphic</li>
+<ul>
+
 ### How to play
 ![image](https://user-images.githubusercontent.com/118670417/234578005-dd7eedaa-2ae9-4da4-9213-6efaee0d6e28.png)
 
